@@ -1,0 +1,232 @@
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet"
+    crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&family=Yuji+Mai&display=swap"
+    rel="stylesheet" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"
+    crossorigin="anonymous"></script>
+
+
+<title> 繪師進化錄產生器 2022 </title>
+
+<style>
+    body {
+        color: rgb(255, 239, 208);
+        font-family: 'Yuji Mai', sans-serif;
+        background-color: #292623;
+        justify-content: space-evenly;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .imgbox {
+        width: 100%;
+        height: 90%;
+        position: relative;
+        object-fit: cover;
+        border-radius: 10px;
+        border-width: 1.5px;
+        border-style: solid;
+        box-sizing: border-box;
+
+    }
+
+    .imgbox:hover {
+        /*transform: scale(1.2);
+        transition-duration: 0.5s;*/
+    }
+
+    input[type="text"] {
+        text-align: center;
+        font-size: 50px;
+        margin: 20px 0px 20px 0px;
+        width: 100%;
+        display: inline-block;
+        font-family: 'Yuji Mai', sans-serif;
+        background-color: #29262300;
+        color: rgb(255, 239, 208);
+        border: 0;
+    }
+
+    .addbox {
+        background-color: #000000;
+        width: 100%;
+        height: 245;
+        position: relative;
+        margin-top: -270;
+        border-radius: 10px;
+        opacity: 0;
+        transition-duration: 0.2s;
+        
+    }
+
+    .addbox:hover {
+        opacity: 0.8;
+    }
+
+    .addboxin {
+        text-align: center;
+        height: 100%;
+        font-size: 50;
+        font-family: "Noto Sans JP", sans-serif;
+        padding-top: 45px;
+        
+    }
+</style>
+
+<body style="">
+    <a href="https://twitter.com/_R0NNI" style="width: 100%;text-decoration: auto;text-align: center;color: antiquewhite; white-space: pre-wrap;">Created by RONI            Twitter @_R0NNI</a>
+    <div id="capture" style="width: 650px;height: 1000px;background-color: #292623;
+    border-width: 1.5px;    border-style: solid;  margin-top: 20px; box-sizing: ; ">
+        <input type="text"
+            style="text-align: center;font-size: 50px;margin: 20px 0px 20px 0px;width: 100%;display: inline-block;"
+            value="繪師進化錄 2022"> </input>
+        <input type="text" id="artistname"
+            style="text-align: center;font-size: 25px;margin: -30px 0px 0px 0px;width: 100%;display: inline-block;"
+            value="請在這裡輸入畫師自己的名字 eg.RONI"> </input>
+        <div style="display: grid;grid-template-columns: auto auto auto auto;grid-template-rows: 270px 270px 270px;column-gap: 10px;row-gap: 10px;height: 82%;margin: 20px;"
+            id="boxx">
+
+        </div>
+
+    </div>
+    <div id="loading"
+        style="position: fixed;top: 0;left: 0;height: 100%;width: 100%; background-color: #000000;opacity: 0;display: none;">
+        <div
+            style="top: 50%; text-align: center; position: relative;font-size: 30px;font-family: 'Noto Sans JP', sans-serif;transition-duration: 0.5s;">
+            請稍等,圖片生成中。。。</div>
+    </div>
+    <div id="savebut"
+        style="width: 200px;height: 200px;text-align: center;padding-top: 58px;background-color: #292623;border-radius: 100px;border-width: 1.5px;border-style: solid;box-sizing: border-box;position: fixed;z-index: 999;right: 15px;bottom: 15px;font-size: 25px;">
+        儲存圖片 <br/> Save iamge</div>
+
+
+</body>
+
+<script>
+    var imgsrc = [
+        'https://pbs.twimg.com/media/FKR_SQqaQAAixXG?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FLfdVh-aIAEGXws?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FP_oUALagAEV1QH?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FRGfrt2aIAAC_s9?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FTWyaRLagAECzkB?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FY7J19_UsAA1Osv?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FZkgIlMUIAAp_11?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/Fano_HNUsAA4agz?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/Fb0SMceVEAAnj4J?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FeoyEEWVUAASUen?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/FgUuwf8VEAAlO50?format=jpg&name=900x900',
+        'https://pbs.twimg.com/media/Fk7CGaXaMAERIN2?format=jpg&name=900x900'];
+    var month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    for (i = 0; i < month.length; i++) {
+        console.log(imgsrc[i]);
+
+        var artbox = document.createElement('div');
+        artbox.className = 'boxx';
+        artbox.id = 'artbox' + i;
+        artbox.setAttribute('style', '')
+        artbox.innerHTML =
+            '<img  class="imgbox" style="" src="' + imgsrc[i] + '"></img><span style="text-align: center;width: 100%;"> ' + month[i] + ' </span><div class="addbox" style=""><div class="addboxin" style="">點我轉圖</div> </div>';
+        document.getElementById('boxx').appendChild(artbox);
+
+        var inputbox = document.createElement('input');
+        inputbox.type = 'file';
+        inputbox.id = 'hoho' + i;
+        inputbox.style.display = 'none'
+
+
+        artbox.appendChild(inputbox);
+        artbox.children[2].children[0].addEventListener('click', function (evt) {
+            console.log('evt.currentTarget' + evt.currentTarget.id.split('haha')[1]);
+            var idxx = evt.currentTarget.id.split('haha')[1];
+            document.getElementById('artbox' + idxx).children[3].click();
+        });
+
+
+        inputbox.addEventListener('change', function (evt) {
+            var tgt = evt.target || window.event.srcElement,
+                files = tgt.files;
+            console.log('evt.currentTarget' + evt.currentTarget.id.split('hoho')[1]);
+            var idx = evt.currentTarget.id.split('hoho')[1];
+
+
+
+            // FileReader support
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function () {
+                    console.log(idx);
+                    document.getElementById('artbox' + idx);
+                    document.getElementById('artbox' + idx).children[0].src = fr.result;
+                }
+                fr.readAsDataURL(files[0]);
+            }
+
+            // Not supported
+            else {
+                // fallback -- perhaps submit the input to an iframe and temporarily store
+                // them on the server until the user's session ends.
+            }
+        })
+
+
+
+
+
+    }
+
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = '.boxx { display: flex;flex-direction: row;flex-wrap: wrap;overflow: hidden;overflow: hidden; }';
+    document.body.appendChild(style);
+
+    console.log(document.getElementById('artistname').value);
+    document.getElementById('savebut').addEventListener('click', captureing);
+    document.getElementById('savebut').addEventListener('click', function () {
+        document.getElementById('loading').style.display = 'block';
+        document.getElementById('loading').style.opacity = 0.8;
+    });
+
+    function captureing() {
+        var node = document.getElementById('capture');
+
+
+        domtoimage.toPng(node)
+            .then(function (dataUrl) {
+
+                var link = document.createElement('a');
+                link.download = '繪師退化錄-' + document.getElementById('artistname').value + '-2022.png';
+                link.href = dataUrl;
+                link.click();
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('loading').style.opacity = 0;
+                }, 800);
+            })
+            .catch(function (error) {
+                console.error('oops, something went wrong!', error);
+            });
+
+
+
+    }
+
+    for (i = 0; i < document.getElementsByClassName('addboxin').length; i++) {
+
+        document.getElementsByClassName('addboxin')[i].id = 'haha' + i;
+
+    }
+
+    function Changeimage(i) {
+        console.log(document.getElementsByClassName('addboxin')[i]);
+
+
+    }
+
+
+
+</script>
