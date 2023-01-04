@@ -327,7 +327,7 @@
         style="width: 650px; height: 1000px; background-color: rgb(41, 38, 35); border-width: 1.5px; border-style: solid; min-width: 650px; max-width: 650px; min-height: 1000px; max-height: 1000px;display: grid;grid-template-rows: 110px auto;transition-duration: 0.4s;">
         <div id="textfield" style="display: flex;flex-direction: column;padding-bottom: 50px;padding: 20px;">
             <input class="textbox" id="titn" type="text"
-                style="text-align: left;font-size: 30px;margin: 20px 0px 20px 0px;width: 100%;display: inline-block;position: relative;"
+                style="text-align: left;font-size: 30px;margin: 20px 0px 20px 0px;width: 100%;display: inline-block;position: relative;white-space:nowrap;"
                 value="#2022年を振り返る"> </input><!--#2022年を振り返る繪師進化錄 2022-->
             <div id="textfield_inner" style="display: flex;position: relative;top: -45px;">
                 <input class="textbox" type="text" id="summary_eng"
@@ -569,18 +569,27 @@
         Done: Release 1.0, improve layout-->
 
                     <div style="text-align: right;">TODO</div>
-                    <div style="text-align: left;">Add preset parameter (w/ test base64 encypt w/ share but)<br /> Add twitter/Fb api <br />圖片獨立位置控制<br /> drag image inside</div>
+                    <div style="text-align: left;">。 Add preset parameter (w/ test base64 encypt w/ share but)<br /> 。 Add twitter/Fb api <br />。 圖片獨立位置控制<br /> 。 Drag image inside</div>
+                    
+                    <div style="text-align: right;">2022.01.05</div>
+                    <div style="text-align: left;">。 Bug fixed - font size adjusted when change template
+                    <br/> 。 Bug fixed - layout bug</div>
+
                     <div style="text-align: right;">2022.01.04</div>
-                    <div style="text-align: left;">Release 2.0</div>
+                    <div style="text-align: left;">。 Release 2.0</div>
+
                     <div style="text-align: right;">2022.01.03</div>
-                    <div style="text-align: left;">Add half year version <br /> Add year compare version</div>
+                    <div style="text-align: left;">。 Add half year version <br /> 。 Add year compare version</div>
+
                     <div style="text-align: right;">2022.01.02</div>
-                    <div style="text-align: left;">文字部分比例<br />月份顯示方式，位置<br /> frame color,Add outline change</div>
+                    <div style="text-align: left;">。 文字部分比例<br />。 月份顯示方式，位置<br /> 。 Add Frame color <br/> 。 Add outline change</div>
+
                     <div style="text-align: right;">2022.12.31</div>
-                    <div style="text-align: left;">layout setting (added layout, image size, row set, style)
-                        Fixed layout problem (add img), minor bugs</div>
+                    <div style="text-align: left;">。 Add Layout setting (added layout, image size, row set, style)
+                        <br/>。 Fixed layout problem (add img)<br/> 。 Fixed minor bugs</div>
+
                     <div style="text-align: right;">2022.12.30</div>
-                    <div style="text-align: left;">Release 1.0, improve layout</div>
+                    <div style="text-align: left;">。 Release 1.0<br/>。 Improve layout</div>
 
 
 
@@ -598,11 +607,13 @@
 
 <script>
     var d = new Date().getFullYear();
-    document.getElementById('titn').value = '繪師進化錄 ' + d;
-    //document.getElementById('titn').value = '#' + d + '年を振り返る';
+    const titletemp = 
+    [['繪師進化錄 ' + d,'上半年繪師進化錄 ' + d,'下半年繪師進化錄 ' + d,'五年繪師進化錄'],
+    ['#' + d + '年を振り返る','#' + d + '上半期の振り返り','#' + d + '下半期の振り返り','5年間の振り返り'],['Summery of '+d,'Summery of first half '+d,'Summery of second half '+d,'Five Year Review']];
+
+    //console.log(titletemp[1][0]);
+    document.getElementById('titn').value = titletemp[0][0];
     document.getElementById('summary_eng').value = d + ' Summery - template powered by @_R0NNI';
-
-
 
     var imgsrc = [
         'https://pbs.twimg.com/media/FKR_SQqaQAAixXG?format=jpg&name=900x900',
@@ -745,7 +756,7 @@
     var rowsforhalf = [0, 1, 2, 4]
     slirowv.addEventListener('input', function () { ChangeRow(slirowv.value - 1) })
     function ChangeRow(row) {
-
+        
         slirow.innerHTML = nums[row];
         //1,2,3,4,6,12
         const ts = document.getElementById('temp_select').value
@@ -1043,32 +1054,44 @@
                 console.log('run1')
             }
 
-            for (let i = startvalue; i < boxx.length; i += step) {
+            if(step>=0){
+                for (let i = startvalue; i < boxx.length; i += step) {
                 boxx[i].style['display'] = display;
                 console.log('run2: ' + i)
+            }
+            }else{
+                for (let i = startvalue; i >= 0; i += step) {
+                boxx[i].style['display'] = display;
+                console.log('run2: ' + i)
+            }
             }
         }
 
         if (temp_select.value == 'tem_F') {
             console.log('temp full year');
             Tempchange(0, 1, 'flex');
+            ChangeRow(4);
         }
         if (temp_select.value == 'tem_HF') {
             console.log('temp first half year')
             Tempchange(6, 1, 'none');
             ChangeRow(2);
+            slirowv.value=3;
         }
         if (temp_select.value == 'tem_HB') {
             console.log('temp second half year')
             Tempchange(5, -1, 'none');
             ChangeRow(2);
-
+            slirowv.value=3;
         }
         if (temp_select.value == 'tem_2Y') {
             console.log('temp year compare')
             Tempchange(2, 1, 'none');
             ChangeRow(1);
+            slirowv.value=1;
         }
+
+        ChangeLang(document.getElementById('lan_select').value)
     }
 
     var aboutme = document.getElementById('aboutme');
@@ -1098,13 +1121,62 @@
 
     function ChangeLang(lang) {
         if (lang == 'lan_J') {
-            document.getElementById('titn').value = '#' + d + '年を振り返る';
+            if (temp_select.value == 'tem_F'){
+                document.getElementById('titn').style.fontSize='30px';
+                document.getElementById('titn').value = titletemp[1][0];
+            }
+            if (temp_select.value == 'tem_HF'){
+                document.getElementById('titn').style.fontSize='22px';
+                document.getElementById('titn').value = titletemp[1][1];
+            }
+            if (temp_select.value == 'tem_HB'){
+                document.getElementById('titn').style.fontSize='22px';
+                document.getElementById('titn').value = titletemp[1][2];
+            }
+            if (temp_select.value == 'tem_2Y'){
+                document.getElementById('titn').style.fontSize='30px';
+                document.getElementById('titn').value = titletemp[1][3];
+            }
+            
+            
         }
         if (lang == 'lan_E') {
-            document.getElementById('titn').value = '#Summery of ' + d;
+            if (temp_select.value == 'tem_F'){
+                document.getElementById('titn').style.fontSize='27px';
+                document.getElementById('titn').value = titletemp[2][0];
+            }
+            if (temp_select.value == 'tem_HF'){
+                document.getElementById('titn').style.fontSize='18px';
+                document.getElementById('titn').value = titletemp[2][1];
+            }
+            if (temp_select.value == 'tem_HB'){
+                document.getElementById('titn').style.fontSize='16px';
+                document.getElementById('titn').value = titletemp[2][2];
+            }
+            if (temp_select.value == 'tem_2Y'){
+                document.getElementById('titn').style.fontSize='27px';
+                document.getElementById('titn').value = titletemp[2][3];
+            }
+            //document.getElementById('titn').value = '#Summery of ' + d;
         }
         if (lang == 'lan_C') {
-            document.getElementById('titn').value = '繪師進化錄 ' + d;
+            if (temp_select.value == 'tem_F'){
+                document.getElementById('titn').style.fontSize='30px';
+                document.getElementById('titn').value = titletemp[0][0];
+            }
+            if (temp_select.value == 'tem_HF'){
+                document.getElementById('titn').style.fontSize='22px';
+                document.getElementById('titn').value = titletemp[0][1];
+            }
+            if (temp_select.value == 'tem_HB'){
+                document.getElementById('titn').style.fontSize='22px';
+                document.getElementById('titn').value = titletemp[0][2];
+            }
+            if (temp_select.value == 'tem_2Y'){
+                document.getElementById('titn').style.fontSize='30px';
+                document.getElementById('titn').value = titletemp[0][3];
+            }
+            //document.getElementById('titn').value = '繪師進化錄 ' + d;
         }
     }
 
