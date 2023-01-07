@@ -3,13 +3,13 @@
     <title> 繪師進化錄產生器 by RONI</title>
     <meta name="google-site-verification" content="4KpHu0apNT0vDVjwgVuUmzz7tzxHGznTatrkphFa56g" />
     <meta name="description"
-        content="繪師進化錄產生器，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼">
+        content="繪師進化錄產生器。 繪師進化錄2023，上半年繪師進化錄，下半年繪師進化錄，五年繪師進化錄，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。">
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="繪師進化錄產生器 by RONI">
     <meta itemprop="image"
         content="https://20220816.s3.ap-northeast-3.amazonaws.com/Artist%20motivation%202022/thumb.jpg">
     <meta itemprop="description"
-        content="繪師進化錄產生器，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼">
+        content="繪師進化錄產生器。 繪師進化錄2023，上半年繪師進化錄，下半年繪師進化錄，五年繪師進化錄，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://ronniechoyy.github.io/artist_evolution_generator/">
@@ -18,7 +18,7 @@
     <meta property="og:image" itemprop="image"
         content="https://20220816.s3.ap-northeast-3.amazonaws.com/Artist%20motivation%202022/thumb.jpg">
     <meta property="og:description"
-        content="繪師進化錄產生器，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新">
+        content="繪師進化錄產生器。 繪師進化錄2023，上半年繪師進化錄，下半年繪師進化錄，五年繪師進化錄，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
         content="https://20220816.s3.ap-northeast-3.amazonaws.com/Artist%20motivation%202022/thumb.jpg">
     <meta name="twitter:title" content="繪師進化錄產生器 by RONI">
     <meta name="twitter:description"
-        content="繪師進化錄產生器，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼">
+        content="繪師進化錄產生器。 繪師進化錄2023，上半年繪師進化錄，下半年繪師進化錄，五年繪師進化錄，歡迎使用。 作為畫師的自己想到每次都要折騰一番，倒不如自己造一個產生器順便練習寫代碼。 本網頁不抓取任何資料，不定時更新。">
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMTDDPGL88"></script>
@@ -589,7 +589,7 @@
             <option value="tem_F">全年 Full Year</option>
             <option value="tem_HF">前半年 1年の前半 First Half Year</option>
             <option value="tem_HB">後半年 1年の後半 Second Half Year</option>
-            <option value="tem_2Y">年份比較 Year Compare</option>
+            <option value="tem_5Y">繪師五年進化錄 Five Year</option>
         </select>
         <div class="nf" style="text-align: center;margin: 15 0 5 0;">語言 Language</div>
         <select id="lan_select"
@@ -606,6 +606,7 @@
             <option value="MP_J">日本語</option>
             <option value="MP_E">English</option>
             <option value="MP_N">Number</option>
+            <option value="MP_NY" hidden >Number (Year)</option>
         </select>
     </div>
 
@@ -668,10 +669,17 @@
         Done: Release 1.0, improve layout-->
 
                     <div style="text-align: right;">TODO</div>
-                    <div style="text-align: left;">。 圖片獨立位置控制<br /> 。 Drag image inside</div>
+                    <div style="text-align: left;">。 圖片獨立位置控制<br /> 。 Resize and Drag image inside
+                        <br />。Fix the pixelized bad quality image
+                    </div>
+
+                    <div style="text-align: right;">2022.01.08</div>
+                    <div style="text-align: left;">。 Bug fixed fb ugly fbclid redirecting
+                        <br /> 。 Added "Suggest" window, feel free to chat me about new function or bugs found
+                    </div>
 
                     <div style="text-align: right;">2022.01.07</div>
-                    <div style="text-align: left;">。 Add preset parameter (w/ test base64 encypt w/ share but)
+                    <div style="text-align: left;">。 Added preset parameter
                         <br /> 。 Added Share Preset function
                     </div>
                     
@@ -726,12 +734,12 @@
 <script>
     var d = new Date().getFullYear();
     const titletemp =
-        [['繪師進化錄 ' + d, '上半年繪師進化錄 ' + d, '下半年繪師進化錄 ' + d, '五年繪師進化錄'],
-        ['#' + d + '年を振り返る', '#' + d + '上半期の振り返り', '#' + d + '下半期の振り返り', '5年間の振り返り'], ['Summery of ' + d, 'Summery of first half ' + d, 'Summery of second half ' + d, 'Five Year Review']];
+        [['繪師進化錄 ' + d, '上半年繪師進化錄 ' + d, '下半年繪師進化錄 ' + d, '繪師五年進化錄'],
+        [d + '年を振り返る',  d + '上半期の振り返り', d + '下半期の振り返り', '絵師五年進化録'], ['Summery of ' + d, 'Summery of first half ' + d, 'Summery of second half ' + d, 'Five Year Review']];
 
     //console.log(titletemp[1][0]);
     document.getElementById('titn').value = titletemp[0][0];
-    document.getElementById('summary_eng').value = d + ' Summery - template powered by @_R0NNI';
+    document.getElementById('summary_eng').value = /*d + ' Summery - */'template powered by @_R0NNI';
 
     var imgsrc = [
         'https://pbs.twimg.com/media/FKR_SQqaQAAixXG?format=jpg&name=900x900',
@@ -751,6 +759,7 @@
     var month_n = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     var month_c = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
     var month_j = ['睦月', '如月', '彌生', '卯月', '皐月', '水無月', '文月', '葉月', '長月', '神無月', '霜月', '師走'];
+    var year_n = [d-11,d-10,d-9,d-8,d-7,d-6,d-5,d-4,d-3,d-2,d-1,d];
 
     for (i = 0; i < month_e.length; i++) {
         //console.log(imgsrc[i]);
@@ -872,6 +881,7 @@
         "auto auto auto auto auto auto auto auto auto auto auto auto",]
 
     var rowsforhalf = [0, 1, 2, 4]
+    var rowsfor5Y = [0,4]
     slirowv.addEventListener('input', function () { ChangeRow(slirowv.value - 1) })
     function ChangeRow(row) {
 
@@ -886,9 +896,9 @@
             slirowv.setAttribute('max', '4');
             document.getElementById('boxx').style.gridTemplateColumns = rows[rowsforhalf[row]];
         }
-        if (ts == 'tem_2Y') {
+        if (ts == 'tem_5Y') {
             slirowv.setAttribute('max', '2');
-            document.getElementById('boxx').style.gridTemplateColumns = rows[rowsforhalf[row]];
+            document.getElementById('boxx').style.gridTemplateColumns = rows[rowsfor5Y[row]];
         }
 
     }
@@ -1044,9 +1054,17 @@
             cw.value = '1000';
             ch.value = '650';
 
-            document.getElementById('boxx').style.gridTemplateColumns = rows[4];
+            const ts = document.getElementById('temp_select').value;
+            if (ts != 'tem_5Y'){
+                document.getElementById('boxx').style.gridTemplateColumns = rows[4];
             slirowv.value = 5
             slirow.innerHTML = nums[4];
+            }else{
+                    document.getElementById('boxx').style.gridTemplateColumns = rows[4];
+            slirowv.value = 3
+            slirow.innerHTML = nums[4];
+                }
+            
 
 
 
@@ -1076,9 +1094,16 @@
             document.getElementById('boxx').setAttribute('style',
                 'display: grid;grid-template-columns: auto auto auto auto;grid-auto-rows: 1fr; ;column-gap: 10px;row-gap: 10px;/*height: calc(100% - 175px)*/;margin: 20px;min-height: 0px;')
 
+                const ts = document.getElementById('temp_select').value;
+                if (ts != 'tem_5Y'){
             document.getElementById('boxx').style.gridTemplateColumns = rows[3];
             slirowv.value = 4
             slirow.innerHTML = nums[3];
+                }else{
+                    document.getElementById('boxx').style.gridTemplateColumns = rows[0];
+            slirowv.value = 1
+            slirow.innerHTML = nums[0];
+                }
 
             var cw = document.getElementById('cw');
             var ch = document.getElementById('ch');
@@ -1130,6 +1155,9 @@
             }
             if (monthv_in == 'MP_J') {
                 element.innerHTML = month_j[i];
+            }
+            if (monthv_in == 'MP_NY') {
+                element.innerHTML = year_n[i];
             }
         }
 
@@ -1255,11 +1283,20 @@
             }
         }
 
+        
+
         if (temp == 'tem_F') {
             console.log('temp full year');
             Tempchange(0, 1, 'flex');
             ChangeRow(4);
             slirowv.value = 5;//is 6
+            
+            if(monb.value=='MP_NY'){
+            ChangeMonth('MP_N');
+            monb.value='MP_N';
+            }
+
+            
 
         }
         if (temp == 'tem_HF') {
@@ -1267,18 +1304,32 @@
             Tempchange(6, 1, 'none');
             ChangeRow(2);
             slirowv.value = 3;//is 4
+            if(monb.value=='MP_NY'){
+            ChangeMonth('MP_N');
+            monb.value='MP_N';
+            }
         }
         if (temp == 'tem_HB') {
             console.log('temp second half year')
             Tempchange(5, -1, 'none');
             ChangeRow(2);
             slirowv.value = 3;//is 4
+            if(monb.value=='MP_NY'){
+            ChangeMonth('MP_N');
+            monb.value='MP_N';
+            }
         }
-        if (temp == 'tem_2Y') {
+        if (temp == 'tem_5Y') {
             console.log('temp year compare')
-            Tempchange(2, 1, 'none');
+            Tempchange(6, -1, 'none');
             ChangeRow(1);
             slirowv.value = 1;//is 2
+            if(monb.value!='MP_NY'){
+            ChangeMonth('MP_NY');
+            monb.value='MP_NY';
+            }
+
+            Layoutchange('v')
         }
 
         ChangeLang(document.getElementById('lan_select').value)
@@ -1345,7 +1396,7 @@
                 document.getElementById('titn').style.fontSize = '22px';
                 document.getElementById('titn').value = titletemp[1][2];
             }
-            if (temp_select.value == 'tem_2Y') {
+            if (temp_select.value == 'tem_5Y') {
                 document.getElementById('titn').style.fontSize = '30px';
                 document.getElementById('titn').value = titletemp[1][3];
             }
@@ -1365,7 +1416,7 @@
                 document.getElementById('titn').style.fontSize = '16px';
                 document.getElementById('titn').value = titletemp[2][2];
             }
-            if (temp_select.value == 'tem_2Y') {
+            if (temp_select.value == 'tem_5Y') {
                 document.getElementById('titn').style.fontSize = '27px';
                 document.getElementById('titn').value = titletemp[2][3];
             }
@@ -1384,7 +1435,7 @@
                 document.getElementById('titn').style.fontSize = '22px';
                 document.getElementById('titn').value = titletemp[0][2];
             }
-            if (temp_select.value == 'tem_2Y') {
+            if (temp_select.value == 'tem_5Y') {
                 document.getElementById('titn').style.fontSize = '30px';
                 document.getElementById('titn').value = titletemp[0][3];
             }
@@ -1413,13 +1464,18 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);//
         const LAYURL = urlParams.get('LAY');
+        const fbshit = urlParams.get('fbclid');
         //const LAY=[temp,lang,month,layoutdict,imgw,imgh,row,stylepreset,stylenum,borderradius,outline,themeline,themeback]
         //?LAY=tem_J-lan_J-MP_J-h-1200px-1000px-4-preset-Style3-500px-out-292623-d1c7be
         const LAY = ['tem_F', 'lan_C', 'MP_C', 'V', '650px', '1000px', '3', 'preset', 'Style1', '10px', 'NOout', 'ffefd0', '292623']
         console.log(LAY);
 
         if (LAYURL == null) {
-            location.replace(urlold + "?LAY=" + LAY[0] + "-" + LAY[1] + "-" + LAY[2] + "-" +
+            
+                //location.replace(location.replace(/\?fbclid.+/, ""));
+                const urloldfixed= window.location.href.replace(window.location.search,'');
+                
+            location.replace(urloldfixed + "?LAY=" + LAY[0] + "-" + LAY[1] + "-" + LAY[2] + "-" +
                 LAY[3] + "-" + LAY[4] + "-" + LAY[5] + "-" + LAY[6] + "-" +
                 LAY[7] + "-" + LAY[8] + "-" + LAY[9] + "-" + LAY[10] + "-" +
                 LAY[11] + "-" + LAY[12])
